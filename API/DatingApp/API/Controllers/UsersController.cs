@@ -5,9 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Controller]
-    [Route("api/[controller]")] //localhost:17XX/api/users
-    public class UsersController : ControllerBase
+   //localhost:17XX/api/users
+    public class UsersController : BaseApiController
     {
         private readonly DataContext _context;
         public UsersController(DataContext context)
@@ -29,7 +28,6 @@ namespace API.Controllers
             var user =await _context.Users.FindAsync(id);
 
             return user;
-        }
-
+        }      
     }
 }
