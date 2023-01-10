@@ -20,7 +20,7 @@ namespace API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
+        public async Task<ActionResult<UserDto>> Register([FromBody]RegisterDto registerDto)
         {
             if (await UsernameExists(registerDto.Username)) return BadRequest("Username is taken");
            
@@ -44,7 +44,7 @@ namespace API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
+        public async Task<ActionResult<UserDto>> Login([FromBody]LoginDto loginDto)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName== loginDto.Username);
 
