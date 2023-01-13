@@ -22,6 +22,8 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register([FromBody]RegisterDto registerDto)
         {
+            //TODO: Validation Error not working.
+
             if (await UsernameExists(registerDto.Username)) return BadRequest("Username is taken");
            
             using var hmac = new HMACSHA512();
